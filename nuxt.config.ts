@@ -8,11 +8,18 @@ export default defineNuxtConfig({
   // '@nuxtjs/supabase',
   '@nuxt/icon',
   'nuxt-lodash',
+  '@pinia-plugin-persistedstate/nuxt',
   '@pinia/nuxt'
 ],
   runtimeConfig: {
     public: {
-      stripePk: process.env.STRIPE_PK_KEY
+      stripePk: process.env.STRIPE_PK
+    }
+  },
+
+  nitro: {
+    routeRules: {
+      '/.well-known/appspecific/com.chrome.devtools.json': { static: true }
     }
   },
 
@@ -20,10 +27,11 @@ export default defineNuxtConfig({
     head: {
       script: [
         {
-          src:'https://js.stripe.com/v3/', defer: true
-        }
+          src:'https://js.stripe.com/v3/', 
+          defer: true,
+        },
       ],
-    }
-  }
+    },
+  },
 
 })
