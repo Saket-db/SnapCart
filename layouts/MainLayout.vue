@@ -91,6 +91,24 @@
                 <input 
                 class="w-full placeholder-gray-400 text-sm pl-3 focus:outline-none" placeholder="Kitchen Accessories" type="text" v-model="searchItem">
                 <Icon name = "eos-icons:loading" v-if = "isSearching" size="25" class="mr-2"/>
+                <button class= "flex items-center h-[100%] p-1.5 px-2 bg-[#ff4646]">
+                    <Icon name = "ph:magnifying-glass" size="20" color ="#ffffff"/>
+                </button>
+            </div>
+
+            <div class = "absolute bg-white max-w-[700px] h-auto w-full">
+                <div v-if= "false" class="p-1">
+                    <NuxtLink
+                    to = "`/item/1`"
+                    class="flex items-center justify-between w-ful cursor-pointer hover: bg-gray-100">
+                    <div class = "flex items-center">
+                        <img class = "rounded-md" width="40" src="https://fastly.picsum.photos/id/82/300/300.jpg?hmac=VnMN7sxSNePsckkp3Rql5brpsqFiYq3Hb1S-RlIjkd0">
+                        <div class = "truncate ml-2">TESTING
+                        </div>
+                        <div class="truncate">$ 99.80</div>
+                    </div>
+                    </NuxtLink>
+                </div>
             </div>
         </div>
         </div> 
