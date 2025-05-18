@@ -34,10 +34,73 @@
                     <Icon name="ic:sharp-install-mobile" size="17"/>
                     App
                 </li>
+            <li
+            @mouseenter="isAccountMenu = true"
+            @mouseleave="isAccountMenu = false"
+            class="relative flex items-center px-2.5 hover:text-[#FF4646] h-full cursor:pointer"
+            :class="isAccountMenu ? 'bg-white border z-40 shadow-[0_15px_100px_20px_rgba(0,0,0,0.3)]' : 'border border-[#FAFAFA]'">
+
+            <Icon name = "ph:user-thin" size = "17" />
+            Account
+            <Icon name = "mdi:chevron-down" size="15" class="ml-5"/>
+
+            <div
+            id = "AccountMenu"
+            v-if = "isAccountMenu"
+            class="absolute bg-white w-[220px] text-[#333333] z-40 top-[38px] border-x border-b left-[-100px]">
+            <div v-if="true">
+                <div class = "text-semibold text-[15px] my-4 px-3">Welcome to AliExpress!</div>
+                <div class = "flex items-center gap-1 px-3 mb-3">
+                    <NuxtLink 
+                    to = "/auth"
+                    class="bg-[#FF4646] text-center w-full text-[16px] rounder-sm font-light px-1 py-2 text-white">
+                    Login / Register
+                    </NuxtLink>
+                </div>
+            </div>
+            <div class = "border-b">
+                <ul class = "bg-white">
+                    <li
+                    @click = "navigateTo('/orders')"
+                    class="text-[13px] py-2 px-4 w-full hover:bg-gray-200">
+                    My orders
+                    </li>
+                     <li
+                    v-if = "true"
+                    class="text-[13px] py-2 px-4 w-full hover:bg-gray-200">
+                    Sign Out
+                    </li>
+                </ul>
+            </div>
+        </div>
+        </li>
       </ul>
+    </div>
+    <div
+    id = "MainHeader"
+    class="flex item-center w-full bg-white">
+    <div class = "flex lg:justify-start justify-between gap-10 max-w-[1150px] w-full px-3 py-4 mx-auto">
+        <NuxtLink to = "/" class = "min-w-[170p]">
+            <img 
+            width="170"
+            src = "https://res.cloudinary.com/dyy1u7wvc/image/upload/v1747599447/AliExpress-logo_knsu9x.png">
+        </NuxtLink>
+        <div class="max-w-[700px] w-full md:block hidden">
+        <div class="relative">
+            <div class="flex items-center border-2 border-[#FF4646] rounded-md w-full">
+                <input 
+                class="w-full placeholder-gray-400 text-sm pl-3 focus:outline-none" placeholder="Kitchen Accessories" type="text" v-model="searchItem">
+                <Icon name = "eos-icons:loading" v-if = "isSearching" size="25" class="mr-2"/>
+            </div>
+        </div>
+        </div> 
+    </div>
     </div>
   </div>
 </template>
 
 <script setup>
+let isAccountMenu = ref(false)
+let isSearching = ref(true)
+let searchItem = ref('')
 </script>
