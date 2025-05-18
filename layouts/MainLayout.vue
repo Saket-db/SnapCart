@@ -111,13 +111,35 @@
                 </div>
             </div>
         </div>
-        </div> 
+    </div> 
+    <NuxtLink
+    to = "/shoppingcart"
+    class = "flex items-center">
+    <button
+    class="relative md:block hidden"
+    @mouseenter="isCartHover =true"
+    @mouseleave="isCartHover = false">
+    <span class="absolute flex items-center justify-center right-[-3px] top-0 bg-[#FF4646] min-w-[17px] text-xs text-white px-0.5 rounded-full">0
+</span>
+<div class="min-w-[40px]">
+    <Icon 
+    name="ph:shopping-cart-simple-light" 
+    size="32" 
+    :color="isCartHover ? '#FF4646' : ''" 
+    />
+
+</div>
+</button>
+
+    </NuxtLink>
+
     </div>
     </div>
   </div>
 </template>
 
 <script setup>
+let isCartHover = ref(false)
 let isAccountMenu = ref(false)
 let isSearching = ref(true)
 let searchItem = ref('')
