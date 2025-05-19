@@ -149,14 +149,12 @@
   </div>
 
   <!-- Loading Overlay -->
-  <Loading v-if="userStore.isLoading" />
+    <Loading v-if="userStore.isLoading" />
 
-  <!-- Main Page Content -->
-  <div class="lg:pt-[150px] md:pt-[130px] pt-[80px]"></div>
-  <slot></slot>
+    <div class="lg:pt-[150px] md:pt-[130px] pt-[80px]" />
+    <slot />
 
-  <!-- Footer -->
-  <Footer v-if="!userStore.isLoading" />
+    <Footer v-if="!userStore.isLoading"/>
 </template>
 
 <script setup>
@@ -164,6 +162,7 @@ let isCartHover = ref(false)
 let isAccountMenu = ref(false)
 let isSearching = ref(true)
 let searchItem = ref('')
+
 
 import { useUserStore } from '~/stores/user';
 const userStore = useUserStore()
