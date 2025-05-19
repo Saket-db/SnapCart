@@ -164,4 +164,7 @@ let isCartHover = ref(false)
 let isAccountMenu = ref(false)
 let isSearching = ref(true)
 let searchItem = ref('')
+
+import { useUserStore } from '~/stores/user';
+const userStore = useUserStore()
 </script>
