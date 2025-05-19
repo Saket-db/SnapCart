@@ -132,10 +132,23 @@
 </button>
 
     </NuxtLink>
+    <button
+    @click="userStore.isMenuOverlay = true"
+    class="md:hidden block rounded-full p-2.5 -mt-[4px] hover:bg-gray-200">
+
+    <Icon name ="material-symbols:menu" size="24" />
+
+    </button>
 
     </div>
     </div>
   </div>
+
+  <Loading v-if = "userStore.isLoading" />
+
+  <div class="lg:pt-[150px] md:pt-[130px] pt-[80px]"></div>
+  <slot></slot>
+  <Footer v-if = "!userStore.isLoading"/>
 </template>
 
 <script setup>
