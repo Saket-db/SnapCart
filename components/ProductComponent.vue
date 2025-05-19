@@ -23,8 +23,16 @@
             </div>
 
             <p class="flex items-center px-1 pt-0.5 text-xs Otext-[#252525]">
-                5,000+ sold <Icon name="material-symbols:starr-rate" color="#757575" class="ml-1.5"/> 4.7
-                </P>
+            5,000+ sold <Icon name="material-symbols:starr-rate" color="#757575" class="ml-1.5"/> 4.7
+            </P>
+
+            <p class="px-1 pt-0.5 text-xs Otext-[#252525]">
+                {{ product.title.substring(0,60) }}
+            </p>
+
+            <p class="px-1 pb-1">
+                <span class="[text-[#0099A6] text-xs font-semibold">Free Shipping</span>
+            </p>
         </div>
     </NuxtLink>
     </div>
