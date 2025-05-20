@@ -39,9 +39,45 @@
                         <Icon name="ic:baseline-star" color="#FF5353"/>
                         <Icon name="ic:baseline-star" color="#FF5353"/>
                         <Icon name="ic:baseline-star" color="#FF5353"/>
+                        <Icon name="ic:baseline-star" color="#FF5353"/>
                         <span class="text-[13px] font-light ml-2">5 213 Reviews 1,000+ orders</span>
                     </div>
                     <div class="border-b" />
+
+                    <div class="flex items-center justify-start gap-2 my-2">
+                        <div class = "text-xl font-bold"> {{priceComputed}}</div>
+                        <span class = "bg-[#F5F5F5] border text-[#c08562] text-[9px] font-semibold px-1 rounded-sm"> 40% Off</span>
+                        </div>
+                        <p class="text-[#009A66] text-xs font-semibold pt-1">
+                            Free 11-day delivery over $88.28
+                        </p>
+
+                        <p class="text-[#009A66] text-xs font-semibold pt-1">
+                        Free Shipping 
+                        </p>
+
+                        <div class="py-2"/>
+
+                    <button
+                        aclick="addToCart()"
+                        :disabled="isInCart"
+                        class="
+                                px-6
+                                py-2
+                                rounded-lg
+                                text-white
+                                text-lg
+                                font-semibold
+                                bg-gradient-to-r
+                                from-[#FF851A]
+                                to-[#FFAC2C]
+                                "
+                                >
+                                <div v-if = "isInCart">Is Added</div>
+                                <div v-else >Add to Cart</div>
+                            </button>
+
+                    
                 </div>
             </div>
         </div>
@@ -49,6 +85,10 @@
 </template>
 
 <script setup>
+import MainLayout from '~/layouts/MainLayout.vue';
+import { useUserStore } from '~/stores/user';
+const useStore = useUserStore();
+const route = useRoute()
 
 let currentImage = ref(null)
 
@@ -59,6 +99,10 @@ onMounted(() => {
     })
 })
 
+const priceComputed = computed(() => {
+    return '26,40'
+})
+
 const images = ref([
     '',
     'https://fastly.picsum.photos/id/77/800/800.jpg?hmac=ifIZafQ-dzUzg2ohWpDHOcO1LFzTdlOclojb5-Rcaa0',
@@ -66,7 +110,22 @@ const images = ref([
     'https://fastly.picsum.photos/id/10/800/800.jpg?hmac=SaapDzK-vdMhnDRoUKZjiLf320I9R3i5E4MZ8kBgPMk',
     'https://fastly.picsum.photos/id/19/800/800.jpg?hmac=3TKnQ3WBqP-IjatPrA6WEPZGkNdbNu0pG0gTtn3cDbA',
 ])
-import MainLayout from '~/layouts/MainLayout.vue';
+
+const isInCart = computed(() =>{
+    let res = false
+    useStore.cart.forEach(prod => {
+        if(route.params.id == prod.id) 
+        {
+            res = true
+        }
+    })
+    return res
+})
+
+const addToCart =() => {
+    alert("Added")
+}
+
 </script>
 
 I
