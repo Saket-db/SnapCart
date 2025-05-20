@@ -39,7 +39,7 @@
               </div>
               <div class="flex items-center gap-1 px-3 mb-3">
                 <NuxtLink
-                  to="/auth"
+                  to="/login"
                   class="bg-[#FF4646] text-center w-full text-[16px] rounded-sm font-light px-1 py-2 text-white"
                 >
                   Login / Register
@@ -156,6 +156,9 @@
 
     <Footer v-if="!userStore.isLoading"/>
 </template>
+
+
+
 
 <script setup>
 let isCartHover = ref(false)

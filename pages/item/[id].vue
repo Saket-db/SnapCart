@@ -32,6 +32,16 @@
                         </span>
                         <p class="@text-[#FF5353]">5% off</p>
                     </div>
+
+                    <div class="flex items-center justify-start my-2">
+                        <Icon name="ic:baseline-star" color="#FF5353"/>
+                        <Icon name="ic:baseline-staric:baseline-star" color="#FF5353"/>
+                        <Icon name="ic:baseline-star" color="#FF5353"/>
+                        <Icon name="ic:baseline-star" color="#FF5353"/>
+                        <Icon name="ic:baseline-star" color="#FF5353"/>
+                        <span class="text-[13px] font-light ml-2">5 213 Reviews 1,000+ orders</span>
+                    </div>
+                    <div class="border-b" />
                 </div>
             </div>
         </div>
