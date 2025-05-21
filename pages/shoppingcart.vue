@@ -44,7 +44,7 @@
 
                     <div id="Items" class="bg-white rounded-lg p-4 mt-4">
                         <div v-for="product in products">
-                            <CartItem 
+                            <CartComponent 
                                 :product="product" 
                                 :selectedArray="selectedArray"
                                 @selectedRadio="selectedRadioFunc"
