@@ -41,7 +41,11 @@
                 <span class="[text-[#0099A6] text-xs font-semibold">Free Shipping</span>
             </p>
             <div class = 'flex items-center justify-end'>
-
+                <!-- <button 
+                @click="removeFromCart()"
+                class="mx-3 sm:block hidden -mt-0.5 hover:text-red-500">
+            
+            </button> -->
 
                 
             </div>
