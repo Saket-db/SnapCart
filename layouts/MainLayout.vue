@@ -4,7 +4,7 @@
     <div id="TopMenu" class="w-full bg-[#FAFAFA] border-b md:block hidden">
       <ul class="flex items-center justify-end text-xs text-[#333333] font-light px-2 h-10 bg-[#FAFAFA] max-w-[1200px]">
         <li class="border-r border-r-gray-400 px-3 hover:text-[#FF4646] cursor-pointer">
-          Sell on AliExpress
+          Sell on SnapCart
         </li>
         <li class="border-r border-r-gray-400 px-3 hover:text-[#FF4646] cursor-pointer">
           Cookie Preferences
@@ -35,7 +35,7 @@
           >
             <div>
               <div class="font-semibold text-[15px] my-4 px-3">
-                Welcome to AliExpress!
+                Welcome to SnapCart!
               </div>
               <div class="flex items-center gap-1 px-3 mb-3">
                 <NuxtLink
@@ -73,7 +73,7 @@
         <NuxtLink to="/" class="min-w-[170px]">
           <img
             width="170"
-            src="https://res.cloudinary.com/dyy1u7wvc/image/upload/v1747599447/AliExpress-logo_knsu9x.png"
+            src="https://res.cloudinary.com/dyy1u7wvc/image/upload/v1748030628/SnapLogo_ca4n50.png"
           />
         </NuxtLink>
 

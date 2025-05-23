@@ -113,10 +113,10 @@ const products = [
 ]
 
 const cards = ref([
-  'paypal.png',
-  'visa.png',
-  'mastercard.png',
-  'applepay.png',
+  // 'phttps://res.cloudinary.com/dyy1u7wvc/image/upload/v1747599448/paypal_zsxzpn.png',
+  'https://res.cloudinary.com/dyy1u7wvc/image/upload/v1747599446/visa_xt4eam.png',
+  'https://res.cloudinary.com/dyy1u7wvc/image/upload/v1747599448/mastercard_ccuzpc.png',
+  'https://res.cloudinary.com/dyy1u7wvc/image/upload/v1747599447/applepay_h9wuo2.png',
 ])
 
 const selectedRadioFunc = (e) =>{
