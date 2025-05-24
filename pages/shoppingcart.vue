@@ -6,7 +6,7 @@
           <img
           class="mx-auto"
           width="250"
-          src = "/public/cart-empty.png"
+          src = "https://res.cloudinary.com/dyy1u7wvc/image/upload/v1747599448/cart-empty_dbwnj0.webp"
           >
 
           <div class="text-xl text-center  mt-5"> Add New Items</div>
@@ -57,20 +57,21 @@
     <div id="Summary" class="bg-white rounded-lg p-4">
       <div class="text-2xl font-extrabold mb-2">Summary</div>
 
-      <div class="flex items-center grid grid-rows-2  justify-between my-4">
-        <div class="font-semibold ">Total
-          <div class="text-2xl font-semibold">
-            $ <span class="font-extrabold">{{ totalPriceComputed }}</span>
+      <div class="flex items-center grid grid-rows-2 justify-between my-4">
+        <div class="font-semibold text-2xl grid grid-cols-2">Total:
+          <div class="text-2xl flex justify-center font-semibold">
+            $ <span class=" font-extrabold">{{ totalPriceComputed }}</span>
           </div>
         </div>
-        <button
+       
+      </div>
+
+       <button
           @click="goToCheckout"
-          class="bg-[#FD374F] w-full text-white text-[23px] font-semibold p-1.5 rounded-full mt-4"
+          class="bg-[#FD374F] ml-2 w-full text-white text-[23px] font-semibold px-3.5 py-2 rounded-full mt-2"
         >
           Checkout
         </button>
-      </div>
-
       <div id="PaymentProtection" class="bg-white rounded-lg p-4 mt-4">
         <div class="text-lg font-semibold mb-2">Payment methods</div>
         <div class="flex items-center justify-start gap-8 my-4">
