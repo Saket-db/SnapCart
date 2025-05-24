@@ -1,10 +1,10 @@
 <template>
-    <div id="MenuOverlay" class="fixed z-50 bottom-0 h-full w-full bg-white px-3">
+  <div id="MenuOverlay" class="fixed z-50 bottom-0 h-full w-full bg-white px-3">
         <div class="flex items-center justify-between py-5">
             <NuxtLink to="/" @click="userStore.isMenuOverlay = false">
                 <img 
                     width="170"
-                    src="https://res.cloudinary.com/dyy1u7wvc/image/upload/v1748030628/SnapLogo_ca4n50.png"
+                    src="/AliExpress-logo.png"
                 >
             </NuxtLink>
 
@@ -75,7 +75,7 @@
                 </li>
 
                 <li 
-                    v-if="user" 
+                    v-if="false" 
                     @click="signOut()"
                     class="
                         relative 
@@ -121,25 +121,6 @@
 </template>
 
 <script setup>
-import { useUserStore } from '~/stores/user';
+import { useUserStore } from '~/stores/user'
 const userStore = useUserStore()
-
-// const client = useSupabaseClient()
-// const user = useSupabaseUser()
-
-const goTo = (url) => {
-    userStore.isMenuOverlay = false
-    return navigateTo(`/${url}`)
-}
-
-const signOut = () => {
-    client.auth.signOut()
-    userStore.isMenuOverlay = false
-    return navigateTo('/')
-}
-
-const signIn = () => {
-    userStore.isMenuOverlay = false
-    return navigateTo('/auth')
-}
 </script>
