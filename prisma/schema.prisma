@@ -18,7 +18,7 @@ model Addresses {
   id         Int       @id @default(autoincrement())
   userId     String    @unique @db.Uuid
   name       String
-  additess   String
+  address   String
   zipcode    String
   city       String
   country    String
