@@ -1,132 +1,168 @@
 <template>
-    <MainLayout>
-        <div id="ItemPage" class="mt-4 max-w-[1200px] mx-auto px-2">
-            <div class="md:flex gap-4 justify-between mx-auto w-full">
-                <div class="md:w-[40%]">
-                    <img
-                        v-if = "currentImage"
-                        :src="currentImage"
-                        class="rounded-lg object-fit"
-                    >
-                    <div v-if = "images[0] !== ''" class = "flex items-center justify-center mt-2">
-                        <div v-for = "image in images">
-                            <img
-                            @mouseover="currentImage = image"
-                            @click = "currentImage = image"
-                            width = "70"
-                            class="rounded-md object-fit border-[3px] cursor-pointer"
-                            :src = "image"
-                            :class="currentImage === image ? 'border-[#FF5353]' : ''"
-                            >
-                        </div>
-                    </div>
-                </div>
-                <div class="md:w-[60%] bg-white p-3 rounded-lg">
-                    <div v-if = "true">
-                        <p class="mb-2">Title</p>
-                        <p class = "font-light text-[12px] mb-2">Description</p> 
-                    </div>
-                    <div class="flex items-center pt-1.5">
-                        <span class="h-4 min-w-4 rounded-full p-0.5 bg-[#FFD000] mr-2">
-                            <Icon name="material-symbols:star-rounded" class="-mt-[17px]" size="12"/>
-                        </span>
-                        <p class="@text-[#FF5353]">5% off</p>
-                    </div>
-
-                    <div class="flex items-center justify-start my-2">
-                        <Icon name="ic:baseline-star" color="#FF5353"/>
-                        <Icon name="ic:baseline-staric:baseline-star" color="#FF5353"/>
-                        <Icon name="ic:baseline-star" color="#FF5353"/>
-                        <Icon name="ic:baseline-star" color="#FF5353"/>
-                        <Icon name="ic:baseline-star" color="#FF5353"/>
-                        <Icon name="ic:baseline-star" color="#FF5353"/>
-                        <span class="text-[13px] font-light ml-2">5 213 Reviews 1,000+ orders</span>
-                    </div>
-                    <div class="border-b" />
-
-                    <div class="flex items-center justify-start gap-2 my-2">
-                        <div class = "text-xl font-bold"> {{priceComputed}}</div>
-                        <span class = "bg-[#F5F5F5] border text-[#c08562] text-[9px] font-semibold px-1 rounded-sm"> 40% Off</span>
-                        </div>
-                        <p class="text-[#009A66] text-xs font-semibold pt-1">
-                            Free 11-day delivery over $88.28
-                        </p>
-
-                        <p class="text-[#009A66] text-xs font-semibold pt-1">
-                        Free Shipping 
-                        </p>
-
-                        <div class="py-2"/>
-
-                    <button
-                        aclick="addToCart()"
-                        :disabled="isInCart"
-                        class="
-                                px-6
-                                py-2
-                                rounded-lg
-                                text-white
-                                text-lg
-                                font-semibold
-                                bg-gradient-to-r
-                                from-[#FF851A]
-                                to-[#FFAC2C]
-                                "
-                                >
-                                <div v-if = "isInCart">Is Added</div>
-                                <div v-else >Add to Cart</div>
-                            </button>
-
-                    
-                </div>
+  <MainLayout>
+    <div id="ItemPage" class="mt-8 max-w-5xl mx-auto px-4">
+      <div class="flex flex-col md:flex-row gap-8">
+        <!-- Product Images -->
+        <div class="w-full md:w-2/5 flex flex-col items-center">
+          <div class="w-full bg-white rounded-lg shadow p-4 flex flex-col items-center">
+            <img
+              v-if="currentImage"
+              :src="currentImage"
+              class="rounded-lg w-full h-96 object-cover transition-all duration-200 border border-gray-200"
+              alt="Product Image"
+            />
+            <div class="flex gap-2 mt-4">
+              <img
+                v-for="(image, idx) in images"
+                :key="image + idx"
+                v-if="image"
+                @mouseover="currentImage = image"
+                @click="currentImage = image"
+                class="w-16 h-16 rounded-md border-2 object-cover cursor-pointer transition-all duration-150"
+                :class="currentImage === image ? 'border-orange-500 ring-2 ring-orange-400' : 'border-gray-200'"
+                :src="image"
+                alt="Thumbnail"
+              />
             </div>
+          </div>
         </div>
-    </MainLayout>
+
+        <!-- Product Details -->
+        <div class="w-full md:w-3/5 bg-white p-6 rounded-lg shadow flex flex-col justify-between">
+          <!-- Info -->
+          <div>
+            <h1 class="text-2xl font-bold mb-2 text-gray-800">Title</h1>
+            <p class="text-gray-500 text-sm mb-4">Description</p>
+            <div class="flex items-center gap-2 mb-3">
+              <span class="inline-flex items-center justify-center h-5 w-5 rounded-full bg-yellow-300 mr-1">
+                <Icon name="material-symbols:star-rounded" class="-mt-[2px]" size="14" />
+              </span>
+              <span class="text-orange-500 font-semibold">5% off</span>
+            </div>
+            <div class="flex items-center mb-3">
+              <Icon v-for="i in 5" :key="i" name="ic:baseline-star" color="#FF5353" />
+              <span class="text-sm font-light ml-2 text-gray-600">5 213 Reviews • 1,000+ orders</span>
+            </div>
+            <div class="border-b mb-4" />
+            <div class="flex items-center gap-2 mb-2">
+              <div class="text-2xl font-bold text-gray-900">${{ priceComputed }}</div>
+              <span class="bg-orange-100 text-orange-700 text-xs font-semibold px-2 py-0.5 rounded">40% Off</span>
+            </div>
+            <p class="text-green-700 text-xs font-semibold">Free 11-day delivery over $88.28</p>
+            <p class="text-green-700 text-xs font-semibold mb-4">Free Shipping</p>
+            <button
+              @click="addToCart"
+              :disabled="isInCart"
+              class="w-full py-3 rounded-lg text-white text-lg font-semibold bg-gradient-to-r from-orange-500 to-yellow-400 shadow hover:from-orange-600 hover:to-yellow-500 transition-all duration-200 disabled:opacity-50"
+            >
+              <span v-if="isInCart">Added to Cart</span>
+              <span v-else>Add to Cart</span>
+            </button>
+          </div>
+          <!-- Live Stream -->
+          <div class="mt-8">
+            <h2 class="text-xl font-bold mb-3">🎥 Live Seller Stream</h2>
+            <div class="aspect-video w-full rounded shadow border bg-black overflow-hidden">
+              <video
+                ref="videoRef"
+                controls
+                autoplay
+                muted
+                playsinline
+                class="w-full h-full rounded"
+                poster="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=800&q=80"
+              />
+            </div>
+            <p v-if="!videoLoaded" class="text-red-500 text-sm mt-3">
+              ⚠️ Stream not active or failed to load.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </MainLayout>
 </template>
 
 <script setup>
-import MainLayout from '~/layouts/MainLayout.vue';
-import { useUserStore } from '~/stores/user';
-const useStore = useUserStore();
+import MainLayout from '~/layouts/MainLayout.vue'
+import { useUserStore } from '~/stores/user'
+import { useRoute } from 'vue-router'
+import { ref, computed, onMounted, nextTick } from 'vue'
+import Hls from 'hls.js'
+
+const useStore = useUserStore()
 const route = useRoute()
-
-
-let currentImage = ref(null)
-
-onMounted(() => {
-    watchEffect(()=>{
-        images.value[0] = 'https://fastly.picsum.photos/id/19/800/800.jpg?hmac=3TKnQ3WBqP-IjatPrA6WEPZGkNdbNu0pG0gTtn3cDbA'
-        currentImage.value ='https://fastly.picsum.photos/id/19/800/800.jpg?hmac=3TKnQ3WBqP-IjatPrA6WEPZGkNdbNu0pG0gTtn3cDbA'
-    })
-})
-
-const priceComputed = computed(() => {
-    return '26,40'
-})
+const videoRef = ref(null)
+const playbackId = "0e7dyhxvuivx1rpm"
+const streamUrl = `https://cdn.livepeer.com/hls/${playbackId}/index.m3u8`
+const videoLoaded = ref(false)
 
 const images = ref([
-    '',
-    'https://fastly.picsum.photos/id/77/800/800.jpg?hmac=ifIZafQ-dzUzg2ohWpDHOcO1LFzTdlOclojb5-Rcaa0',
-    'https://fastly.picsum.photos/id/100/800/800.jpg?hmac=a2loVcr-8SrMJLE1eVOwuO2P0dK05kvAZ4YifobFzVA',
-    'https://fastly.picsum.photos/id/10/800/800.jpg?hmac=SaapDzK-vdMhnDRoUKZjiLf320I9R3i5E4MZ8kBgPMk',
-    'https://fastly.picsum.photos/id/19/800/800.jpg?hmac=3TKnQ3WBqP-IjatPrA6WEPZGkNdbNu0pG0gTtn3cDbA',
+  'https://fastly.picsum.photos/id/77/800/800.jpg?hmac=ifIZafQ-dzUzg2ohWpDHOcO1LFzTdlOclojb5-Rcaa0',
+  'https://fastly.picsum.photos/id/100/800/800.jpg?hmac=a2loVcr-8SrMJLE1eVOwuO2P0dK05kvAZ4YifobFzVA',
+  'https://fastly.picsum.photos/id/10/800/800.jpg?hmac=SaapDzK-vdMhnDRoUKZjiLf320I9R3i5E4MZ8kBgPMk',
+  'https://fastly.picsum.photos/id/19/800/800.jpg?hmac=3TKnQ3WBqP-IjatPrA6WEPZGkNdbNu0pG0gTtn3cDbA'
 ])
+const currentImage = ref(images.value[0])
 
-const isInCart = computed(() =>{
-    let res = false
-    useStore.cart.forEach(prod => {
-        if(route.params.id == prod.id) 
-        {
-            res = true
-        }
-    })
-    return res
+const priceComputed = computed(() => '26.40')
+
+const isInCart = computed(() => {
+  return useStore.cart.some(prod => route.params.id == prod.id)
 })
 
-const addToCart =() => {
-    alert("Added")
+const addToCart = () => {
+  alert('Added')
 }
 
-</script>
+onMounted(async () => {
+  await nextTick()
+  // Always set the first image as default on mount
+  currentImage.value = images.value[0]
 
-I
+  if (!videoRef.value) return
+
+  if (Hls.isSupported()) {
+    const hls = new Hls()
+    hls.loadSource(streamUrl)
+    hls.attachMedia(videoRef.value)
+
+    hls.on(Hls.Events.MANIFEST_PARSED, () => {
+      videoLoaded.value = true
+      videoRef.value.play().catch(err => {
+        console.warn("Autoplay failed:", err)
+      })
+    })
+
+    hls.on(Hls.Events.ERROR, (_, data) => {
+      console.error("HLS error:", data)
+      if (data.fatal) {
+        switch (data.type) {
+          case Hls.ErrorTypes.NETWORK_ERROR:
+            hls.startLoad()
+            break
+          case Hls.ErrorTypes.MEDIA_ERROR:
+            hls.recoverMediaError()
+            break
+          default:
+            hls.destroy()
+            videoLoaded.value = false
+            break
+        }
+      }
+    })
+  } else if (videoRef.value.canPlayType('application/vnd.apple.mpegurl')) {
+    // Safari & iOS
+    videoRef.value.src = streamUrl
+    videoRef.value.addEventListener('loadedmetadata', () => {
+      videoLoaded.value = true
+      videoRef.value.play().catch(err => {
+        console.warn("Autoplay failed:", err)
+      })
+    })
+  } else {
+    console.warn('This browser does not support HLS playback.')
+    videoLoaded.value = false
+  }
+})
+</script>
